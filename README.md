@@ -139,3 +139,23 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 > return 형태는 URL, IPFS(탈중앙화된 파일 시스템에 존재하는 해당 파일의 해쉬값), JSON 스키마
 
 ---
+
+## ERC721 인터페이스 구현 로직
+*해당 내용은 실제 구현을 어떻게 할 것인지에 대한 내용을 나타내고 있어, 최대한 개념적인 부분만 정리할 예정*
+
+### 토큰 Enumeration
+tokenByIndex()(인덱스를 통해 토큰을 조회/토큰ID를 통해 인덱스 조회)를 위해서 만들어야할 구조<br/>
+✓ unit256[] public 구조명;: tokeyByIndex에서 사용
+✓ mapping(uint256 => uint256) private 구조명;: 토큰 ID로 인덱스를 조회할 때 사용
+
+### 이러한 표준이 필요한 이유는?
+> totalSupply()에서 _index < totalSupply()한 규칙 떄문에 다음과 같은 표준을 만들어야 함
+
+### 토큰의 삭제 과정
+1. 폐기되는 토큰 인덱스와 마지막 토큰 인덱스를 구한다.
+2. 폐기되는 토큰 인덱스에 마지막 인덱스의 토큰 아이디를 업데이트한다.
+3. 마지막 인덱스의 토큰 아이디의 인덱스를 바뀐 인덱스로 업데이트한다.
+4. 배열의 길이를 줄인다.
+```
+allValidTokenIds.length = allValidTokenIds.length.sub(1); // 가변 길이 배열에선 길이를 변경할 수 있어 가능
+```
