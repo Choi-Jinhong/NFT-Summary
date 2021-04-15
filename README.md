@@ -81,7 +81,7 @@ function transferFrom(address _from, address _to, uint256 _tokenId) external pay
 - 예제
 ERC-721 표준 인터페이스를 구현하는 컨트랙트는 ERC-165를 구현하여 그 여부를 확인할 수 있어야 한다는 규칙이 있어야 한다.
 > ERC-721을 구현할 때에는 반드시 ERC-165를 구현해야 한다느 표준이 있기 때문에 이를 ERC-165를 통해 나타냄
-
+>
 > ERC-721에서 구현한 함수의 시그니처를 모두 XOR연산 했을 때의 값(16진수로 표현)을 ERC-165에 넣었을 때 반환 값이 true면 해당 표준으로 구현했다라는 의미
 
 - 코드
@@ -111,7 +111,7 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 
 ### ERC721Enumerable
 > 확장 인터페이스
-
+>
 > 발행된 토큰을 쓸 수 있는 또는 인덱싱 할 수 있는 함수들을 정의하는 인터페이스
 
 ✓ totalSupply() : 발행된 *유효한 토큰의 총 수<br/>
@@ -119,11 +119,11 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 
 ✓ tokenByIndex(uint256 _index) : _index에 해당하는 토큰ID 인덱스는 _index < totalSupply()<br/>
 > 발행된 토큰에 대한 순서를 매기는 함수
-
+>
 > 꼭 발행된 순서대로 인덱스가 구성될 필요는 없다.
-
+>
 > 해당 인덱스는 totalSupply()보다 적어야 한다.
-
+>
 > 기존에 있던 토큰이 삭제되고 인덱스가 totalSupply()의 값보다 클 경우 이를 수정하는 로직을 구성해줘야 함
 
 ✓ tokenOfOwnerByIndex(address _owner, uint256 _index) : 소유 계정이 가진 토큰 중 인덱스에 해당하는 토큰ID<br/>
@@ -133,9 +133,9 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 ✓ symbol() : 토큰 심볼
 ✓ tokenURI(uint256 _tokenId) : 토큰 ID가 가리키는 리소스 정보(JSON)
 > ERC721은 단순히 토큰의 이름만 부여된 것이고 실제 어떤 자산을 가르키고 있는 지는 나와있지 않음
-
+>
 > 블록체인에 기재되어있는 자산이 아닌 이상 오프체인에 있는 내용은 알 수 없음
-
+>
 > return 형태는 URL, IPFS(탈중앙화된 파일 시스템에 존재하는 해당 파일의 해쉬값), JSON 스키마
 
 ---
