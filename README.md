@@ -7,7 +7,7 @@
 
 ### 주요 내용
 
-ERC-721의 주요 내용은 '**대체 불가능(\*non-fungible)**' 과 '**소유권(자격) 증명(deed)**' 이다.
+ERC-721의 주요 내용은 '**대체 불가능(\*non-fungible)**' 과 '**소유권(자격) 증명(deed)**' 이다.</br>
 즉, 대체할 수 없는 것들에 대해 자격을 증명해주는 것을 위해 만들어진 표준이다.
 
 _non-fungible: 가치가 서로 상이한 유일한 것_
@@ -62,13 +62,13 @@ function tokenOfOwnerByIndex(address _owner, uint256 _index) external view retur
 
 ### 추가적인 기타 사항
 ✓ 솔리디티 컴파일러 버전에 따른 영향 - 함수 정의 변경 </br>
-✓ 명시적인 mutability 
+✓ 명시적인 mutability </br>
 ```
 function transferFrom(address _from, address _to, uint256 _tokenId) external payable;
 // external: visibility를 설정하는 자리
 // payable: mutability를 설정하는 자리 구현의 목적에 맞게 변경, 'payable'은 eth를 같이 지불할 수 있는 함수를 나타냄
 ```
-✓ 토큰 ID는 애플리케이션이 결정. 이더리움 내에서 유일한 값(컨트랙트 주소+토큰 ID)
+✓ 토큰 ID는 애플리케이션이 결정. 이더리움 내에서 유일한 값(컨트랙트 주소+토큰 ID)</br>
 *mutability: 상태 변수를 변경할 수 있는 함수인지의 여부*
 
 ---
@@ -92,10 +92,10 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 ```
 
 ### ERC721 이벤트
-3개의 이벤트 - 이벤트 발생 시 화면(UI)에 알림용
-✓ Transffer: 소유권 이전 시 발생 
-✓ Approval: 소유권 이전 승인 시 발생(하나의 토큰에 대해)
-✓ ApprovalAll: 소유권 이전 승인 시 발생(모든 토큰에 대해)
+3개의 이벤트 - 이벤트 발생 시 화면(UI)에 알림용</br>
+✓ Transffer: 소유권 이전 시 발생 </br>
+✓ Approval: 소유권 이전 승인 시 발생(하나의 토큰에 대해)</br>
+✓ ApprovalAll: 소유권 이전 승인 시 발생(모든 토큰에 대해)</br>
 
 ### ERC721 함수
 9개의 함수 
@@ -129,9 +129,9 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 ✓ tokenOfOwnerByIndex(address _owner, uint256 _index) : 소유 계정이 가진 토큰 중 인덱스에 해당하는 토큰ID<br/>
 
 ### ERC721Metadata
-✓ name(): 토큰 이름
-✓ symbol() : 토큰 심볼
-✓ tokenURI(uint256 _tokenId) : 토큰 ID가 가리키는 리소스 정보(JSON)
+✓ name(): 토큰 이름</br>
+✓ symbol() : 토큰 심볼</br>
+✓ tokenURI(uint256 _tokenId) : 토큰 ID가 가리키는 리소스 정보(JSON)</br>
 > ERC721은 단순히 토큰의 이름만 부여된 것이고 실제 어떤 자산을 가르키고 있는 지는 나와있지 않음
 >
 > 블록체인에 기재되어있는 자산이 아닌 이상 오프체인에 있는 내용은 알 수 없음
@@ -145,8 +145,8 @@ function supportsInterface(bytes4 interfaceID) external view returns (bool){ ret
 
 ### 토큰 Enumeration
 tokenByIndex()(인덱스를 통해 토큰을 조회/토큰ID를 통해 인덱스 조회)를 위해서 만들어야할 구조<br/>
-✓ unit256[] public 구조명;: tokeyByIndex에서 사용
-✓ mapping(uint256 => uint256) private 구조명;: 토큰 ID로 인덱스를 조회할 때 사용
+✓ unit256[] public 구조명;: tokeyByIndex에서 사용</br>
+✓ mapping(uint256 => uint256) private 구조명;: 토큰 ID로 인덱스를 조회할 때 사용</br>
 
 ### 이러한 표준이 필요한 이유는?
 > totalSupply()에서 _index < totalSupply()한 규칙 떄문에 다음과 같은 표준을 만들어야 함
